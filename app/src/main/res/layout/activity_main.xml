@@ -8,38 +8,41 @@
 
     <Button
         android:id="@+id/Button1"
-        android:layout_width="165dp"
-        android:layout_height="53dp"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
         android:layout_marginStart="106dp"
         android:layout_marginEnd="141dp"
-        android:layout_marginBottom="33dp"
-        android:text="1"
+        android:layout_marginBottom="60dp"
+        android:text="講你知"
         app:layout_constraintBottom_toTopOf="@+id/Button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Button2"
-        android:layout_width="165dp"
-        android:layout_height="53dp"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="141dp"
-        android:layout_marginBottom="25dp"
-        android:text="2"
+        android:layout_marginBottom="60dp"
+        android:text="問問你"
         app:layout_constraintBottom_toTopOf="@+id/Button3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Button3"
-        android:layout_width="165dp"
-        android:layout_height="53dp"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="141dp"
-        android:layout_marginBottom="257dp"
-        android:text="3"
+        android:layout_marginBottom="252dp"
+        android:text="考考你"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
