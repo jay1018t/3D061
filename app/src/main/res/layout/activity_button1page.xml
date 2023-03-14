@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Button1page">
 
     <Button
@@ -29,33 +30,38 @@
         app:layout_constraintStart_toEndOf="@+id/BackButton" />
 
     <LinearLayout
-        android:layout_width="498dp"
-        android:layout_height="649dp"
+        android:layout_width="405dp"
+        android:layout_height="600dp"
+        android:layout_marginBottom="52dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-30dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toTopOf="@+id/BackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/textTitle"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name" />
 
         <ImageView
             android:id="@+id/textImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_width="wrap_content"
+            android:layout_height="216dp"
+            app:srcCompat="@drawable/photo1"
+            tools:srcCompat="@drawable/photo1" />
 
         <EditText
             android:id="@+id/textDetail"
             android:layout_width="match_parent"
-            android:layout_height="185dp"
+            android:layout_height="199dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
