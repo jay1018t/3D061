@@ -1,9 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE RelativeLayout [<!ELEMENT RelativeLayout (#PCDATA)><!ATTLIST RelativeLayoutxmlns:android CDATA #REQUIREDxmlns:app CDATA #REQUIREDxmlns:tools CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDtools:context CDATA #REQUIRED>]>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".Button3page">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quiz_title"
+        android:text="1"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question"
+        android:textStyle="bold"
+        android:text="2"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:layout_above="@+id/choices_layout"/>
+
+    <LinearLayout
+        android:id="@+id/choices_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_1"
+            android:text="A" />
+
+        <Button
+            android:id="@+id/B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_1"
+            android:layout_margin="5dp"
+            android:text="B" />
+
+        <Button
+            android:id="@+id/C"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_1"
+            android:layout_margin="5dp"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/D"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_1"
+            android:layout_margin="5dp"
+            android:text="D" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit_btn"
+        android:text="Submit"
+        android:layout_below="@+id/choices_layout"
+        android:layout_marginTop="40dp"/>
+
+
+
+</RelativeLayout>
