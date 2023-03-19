@@ -16,7 +16,7 @@
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/choices_layout"
@@ -41,8 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:text="A"
             android:textColor="@color/cardview_dark_background"
-            android:text="A" />
+            app:cornerRadius="350dp" />
 
         <Button
             android:id="@+id/ans_B"
@@ -50,7 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@color/cardview_dark_background"
-            android:text="B" />
+            android:text="B"
+            app:cornerRadius="350dp" />
 
         <Button
             android:id="@+id/ans_C"
@@ -58,7 +60,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/cardview_dark_background"
             android:layout_margin="5dp"
-            android:text="C" />
+            android:text="C"
+            app:cornerRadius="350dp" />
 
         <Button
             android:id="@+id/ans_D"
@@ -66,17 +69,18 @@
             android:layout_height="wrap_content"
             android:textColor="@color/cardview_dark_background"
             android:layout_margin="5dp"
-            android:text="D" />
+            android:text="D"
+            app:cornerRadius="350dp" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/submit_btn"
-        android:text="Submit"
         android:layout_below="@+id/choices_layout"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:text="提交" />
 
 
 

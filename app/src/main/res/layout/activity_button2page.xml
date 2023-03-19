@@ -1,9 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Button2page">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".Button2page"
+        android:background="@drawable/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Total_Questions"
+        android:text="1"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/choices_layout"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="question"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/choices_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/light_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:text="光源顏色"
+                android:textColor="@color/white"
+                />
+
+            <Button
+                android:id="@+id/bl"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Blue Light"
+                android:textColor="@color/cardview_dark_background"
+                app:cornerRadius="350dp" />
+
+            <Button
+                android:id="@+id/gl"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Green Light"
+                android:textColor="@color/cardview_dark_background"
+                app:cornerRadius="350dp" />
+            <Button
+                android:id="@+id/rl"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Red Light"
+                android:textColor="@color/cardview_dark_background"
+                app:cornerRadius="350dp" />
+
+            <Button
+                android:id="@+id/wl"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="White Light"
+                android:textColor="@color/cardview_dark_background"
+                app:cornerRadius="350dp" />
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/ball_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:text="小球顏色"
+            android:textColor="@color/white"
+             />
+
+
+        <Button
+            android:id="@+id/db"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Dark Ball"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="350dp" />
+
+        <Button
+            android:id="@+id/bb"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Blue Ball"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="350dp" />
+        <Button
+            android:id="@+id/gb"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Green Ball"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="350dp" />
+
+
+        <Button
+            android:id="@+id/rb"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Red Ball"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="350dp" />
+
+        <Button
+            android:id="@+id/wb"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="White Ball"
+            android:textColor="@color/cardview_dark_background"
+            app:cornerRadius="350dp" />
+    </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/resultLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/choices_layout"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="反射顏色"
+        android:textColor="@color/btnColor" />
+
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resultLight"
+        android:layout_marginTop="5dp"
+        android:text="開始遊戲" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/play_btn"
+        android:layout_marginTop="5dp"
+        android:text="返回主頁" />
+
+
+</RelativeLayout>

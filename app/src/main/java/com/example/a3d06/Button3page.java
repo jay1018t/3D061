@@ -1,9 +1,9 @@
 package com.example.a3d06;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelStore;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +21,7 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
     int totalQuestion = QuestionAnswer.question.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
+    String scoreMessage = "";
 
 
 
@@ -31,7 +32,7 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_button3page);
 
         totalQuestionsTextView = findViewById(R.id.Total_Questions);
-        questionTextView = findViewById(R.id.question);
+        questionTextView = findViewById(R.id.result);
         ansA = findViewById(R.id.ans_A);
         ansB = findViewById(R.id.ans_B);
         ansC = findViewById(R.id.ans_C);
@@ -44,25 +45,29 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         ansD.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
 
-        totalQuestionsTextView.setText("問題總數 : "+totalQuestion);
-
-        loadNewQuestions();
-    }
-
-    @Override
-    public void onClick(View view) {
-
         ansA.setBackgroundColor(Color.WHITE);
         ansB.setBackgroundColor(Color.WHITE);
         ansC.setBackgroundColor(Color.WHITE);
         ansD.setBackgroundColor(Color.WHITE);
 
 
+        loadNewQuestions();
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        ansA.setBackgroundColor(Color.WHITE);
+        ansB.setBackgroundColor(Color.WHITE);
+        ansC.setBackgroundColor(Color.WHITE);
+        ansD.setBackgroundColor(Color.WHITE);
 
         Button clickedButton = (Button) view;
         if(clickedButton.getId()==R.id.submit_btn){
 
-            if(selectedAnswer.equals(QuestionAnswer.correctAnswers[currentQuestionIndex])){
+            if(selectedAnswer.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex]))
+            {
                 score++;
             }
             currentQuestionIndex++;
@@ -76,13 +81,15 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
 
     }
 
-    void loadNewQuestions(){
-
-        if(currentQuestionIndex == totalQuestion){
+    void loadNewQuestions()
+    {
+        if(currentQuestionIndex == totalQuestion)
+        {
             finishQuiz();
             return;
         }
 
+        totalQuestionsTextView.setText("問題 : "+(currentQuestionIndex+1) + "/" + totalQuestion);
 
         questionTextView.setText(QuestionAnswer.question[currentQuestionIndex]);
         ansA.setText(QuestionAnswer.choices[currentQuestionIndex][0]);
@@ -100,19 +107,29 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
             passStatus = "Failed eat my shit";
         }
 
+        scoreMessage    = "得分是 "+ score+" / "+ totalQuestion;
+/*
         new AlertDialog.Builder(this)
                 .setTitle(passStatus)
                 .setMessage("得分是 "+ score+" / "+ totalQuestion)
-                .setPositiveButton("Restart",(dialogInterface, i) -> restartQuiz())
+                .setPositiveButton("完成",(dialogInterface, i) -> restartQuiz())
                 .setCancelable(false)
                 .show();
-
+*/
+        restartQuiz();
     }
 
-    void restartQuiz(){
+    void restartQuiz()
+    {
+        /*
         score = 0;
         currentQuestionIndex = 0;
         loadNewQuestions();
+          */
+        String localmessage=scoreMessage;
+        Intent intent = new Intent(Button3page.this, finalresultpage.class);
+        intent.putExtra("scoreMessage", localmessage);
+        startActivity(intent);
     }
 
 
