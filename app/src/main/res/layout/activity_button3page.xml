@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE RelativeLayout [<!ELEMENT RelativeLayout (#PCDATA)><!ATTLIST RelativeLayoutxmlns:android CDATA #REQUIREDxmlns:app CDATA #REQUIREDxmlns:tools CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDtools:context CDATA #REQUIRED>]>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
