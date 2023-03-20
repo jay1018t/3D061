@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.speech.tts.TextToSpeech;
+
+import java.util.Locale;
+
 
 public class Button3page extends AppCompatActivity implements View.OnClickListener{
 
@@ -30,7 +34,14 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button3page);
-
+/*
+        TextToSpeech ttobj=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+            }
+        });
+        ttobj.setLanguage(Locale.CHINESE);
+*/
         totalQuestionsTextView = findViewById(R.id.Total_Questions);
         questionTextView = findViewById(R.id.result);
         ansA = findViewById(R.id.ans_A);
@@ -53,6 +64,12 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
 
         loadNewQuestions();
 
+        // Play the question
+
+/*
+        String cs =questionTextView.getText().toString();
+        ttobj.speak(cs, TextToSpeech.QUEUE_FLUSH, null);
+*/
 
     }
 

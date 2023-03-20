@@ -13,7 +13,7 @@
         android:id="@+id/choices_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/BackButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +38,10 @@
         <EditText
             android:id="@+id/textDetail"
             android:layout_width="match_parent"
-            android:layout_height="199dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
-
     </LinearLayout>
 
     <Button
@@ -51,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="35dp"
-        android:text="Back"
+        android:text="上一個"
         android:layout_below="@+id/choices_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -63,7 +62,7 @@
         android:layout_marginStart="174dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="35dp"
-        android:text="Next"
+        android:text="下一個"
         android:layout_below="@+id/choices_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
