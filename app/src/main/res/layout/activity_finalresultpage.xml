@@ -9,26 +9,31 @@
     android:background="@drawable/background">
 
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="348dp"
-        android:layout_height="303dp"
-        android:layout_above="@id/choices_layout"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="19dp"
-        android:text="Result"
-        android:textAlignment="center"
-        android:textSize="24dp"
-        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
         android:id="@+id/choices_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical" />
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="367dp"
+            android:layout_height="163dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="-3dp"
+            android:text="Result"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/submit_btn"
