@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.speech.tts.TextToSpeech;
 
@@ -20,12 +22,16 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
     TextView questionTextView;
     Button ansA,ansB,ansC,ansD;
     Button submitBtn;
+    CheckBox autoRead;
 
     int score=0;
     int totalQuestion = QuestionAnswer.question.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
     String scoreMessage = "";
+    private TextToSpeech ttobj;
+    private Boolean bCanSpeakNow = false;
+    private Boolean bAutoRead = true;
 
 
 
@@ -34,14 +40,27 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button3page);
-/*
-        TextToSpeech ttobj=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+
+        ttobj = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //int result = ttobj.setLanguage(Locale.TRADITIONAL_CHINESE);
+                    //int result = ttobj.setLanguage(new Locale("zh", "HK"));
+                    int result = ttobj.setLanguage(new Locale("yue", "HK"));
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        //Log.e("TTS", "This Language is not supported");
+                    } else {
+                        bCanSpeakNow = true;
+                        ReadTheQuestion();
+                    }
+                } else {
+                    //Log.e("TTS", "Initilization Failed!");
+                }
             }
         });
-        ttobj.setLanguage(Locale.CHINESE);
-*/
+
         totalQuestionsTextView = findViewById(R.id.Total_Questions);
         questionTextView = findViewById(R.id.result);
         ansA = findViewById(R.id.ans_A);
@@ -61,6 +80,10 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         ansC.setBackgroundColor(Color.WHITE);
         ansD.setBackgroundColor(Color.WHITE);
 
+        autoRead    = findViewById(R.id.Auto_ReadCheckBox);
+        autoRead.setOnClickListener(this);
+        autoRead.setChecked(true);
+
 
         loadNewQuestions();
 
@@ -71,6 +94,16 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         ttobj.speak(cs, TextToSpeech.QUEUE_FLUSH, null);
 */
 
+    }
+
+    @Override
+    public void onDestroy() {
+// Don't forget to shutdown tts!
+        if (ttobj != null) {
+            ttobj.stop();
+            ttobj.shutdown();
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -85,12 +118,30 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
 
             if(selectedAnswer.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex]))
             {
+                ttobj.speak("答對了!", TextToSpeech.QUEUE_FLUSH, null);
+
                 score++;
+            } else {
+                ttobj.speak("答錯了!", TextToSpeech.QUEUE_FLUSH, null);
             }
             currentQuestionIndex++;
             loadNewQuestions();
 
-        }else{
+        }
+        else if (clickedButton.getId() == R.id.Auto_ReadCheckBox)
+        {
+            if (autoRead.isChecked())
+            {
+                bAutoRead   = true;
+                ReadTheQuestion();
+            }
+            else
+            {
+                bAutoRead   = false;
+                ttobj.stop();
+            }
+        }
+        else{
             //單擊選擇按鈕
             selectedAnswer = clickedButton.getText().toString();
             clickedButton.setBackgroundColor(Color.MAGENTA);
@@ -113,6 +164,18 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         ansB.setText(QuestionAnswer.choices[currentQuestionIndex][1]);
         ansC.setText(QuestionAnswer.choices[currentQuestionIndex][2]);
         ansD.setText(QuestionAnswer.choices[currentQuestionIndex][3]);
+
+        if (bCanSpeakNow) {
+            ReadTheQuestion();
+        }
+
+    }
+
+    void ReadTheQuestion() {
+        if (bAutoRead && bCanSpeakNow) {
+            String cs = questionTextView.getText().toString();
+            ttobj.speak(cs, TextToSpeech.QUEUE_ADD, null);
+        }
     }
 
     void finishQuiz(){
@@ -125,6 +188,24 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         }
 
         scoreMessage    = "得分是 "+ score+" / "+ totalQuestion;
+
+        if (score == 0) {
+            ttobj.speak("你真系人才!",  TextToSpeech.QUEUE_FLUSH, null);
+        }
+        else if (score < 3) {
+            ttobj.speak("繼續努力!",  TextToSpeech.QUEUE_FLUSH, null);
+        }
+        else if (score >= 3 && score <= 5) {
+            ttobj.speak("好彩合格!", TextToSpeech.QUEUE_FLUSH, null);
+        }
+        else if (score == 5)
+        {
+            ttobj.speak("做得非常非常之好!", TextToSpeech.QUEUE_FLUSH, null);
+        } else if (score == 6)
+        {
+            ttobj.speak("你真系天才!",  TextToSpeech.QUEUE_FLUSH, null);
+        }
+
 /*
         new AlertDialog.Builder(this)
                 .setTitle(passStatus)
