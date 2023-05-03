@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
@@ -16,6 +17,7 @@ public class Button2page extends AppCompatActivity implements View.OnClickListen
     Button bl, gl, rl, wl;
     Button db, bb, gb, rb, wb;
     Button resultLight;
+    ImageView resultImage;
     Button submitBtn;
 
     int LightIndex  = 0;
@@ -39,6 +41,7 @@ public class Button2page extends AppCompatActivity implements View.OnClickListen
         rb = findViewById(R.id.rb);
         wb = findViewById(R.id.wb);
 
+        resultImage = findViewById(R.id.ResultImage);
         resultLight = findViewById(R.id.resultLight);
         resultLight.setText("物件呈現的顏色");
 
@@ -178,6 +181,16 @@ public class Button2page extends AppCompatActivity implements View.OnClickListen
                 }
             }
             resultLight.setBackgroundColor(resultColor);
+            if (resultColor == Color.BLUE)
+                resultImage.setImageDrawable(getResources().getDrawable(R.drawable.blueball));
+            else if (resultColor == Color.RED)
+                resultImage.setImageDrawable(getResources().getDrawable(R.drawable.redball));
+            else if (resultColor == Color.GREEN)
+                resultImage.setImageDrawable(getResources().getDrawable(R.drawable.greenball));
+            else if (resultColor == Color.WHITE)
+                resultImage.setImageDrawable(getResources().getDrawable(R.drawable.whiteball));
+            else
+                resultImage.setImageDrawable(getResources().getDrawable(R.drawable.blackball));
         }
     }
 }

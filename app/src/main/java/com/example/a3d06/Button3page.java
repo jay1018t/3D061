@@ -114,18 +114,82 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         ansD.setBackgroundColor(Color.WHITE);
 
         Button clickedButton = (Button) view;
-        if(clickedButton.getId()==R.id.submit_btn){
-
-            if(selectedAnswer.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex]))
+        if(clickedButton.getId()==R.id.submit_btn)
+        {
+            String SubmitLabel =clickedButton.getText().toString();
+            if (SubmitLabel.equalsIgnoreCase("提交"))
             {
-                ttobj.speak("答對了!", TextToSpeech.QUEUE_FLUSH, null);
+                clickedButton.setText("下一題");
+                if (selectedAnswer.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex])) {
+                    ttobj.speak("答對了!", TextToSpeech.QUEUE_FLUSH, null);
+                    score++;
 
-                score++;
+                    // Highlight the correct answer
+                    switch(selectedAnswer.charAt(0))
+                    {
+                        case 'A':
+                            ansA.setBackgroundColor(Color.GREEN);
+                            break;
+                        case 'B':
+                            ansB.setBackgroundColor(Color.GREEN);
+                            break;
+                        case 'C':
+                            ansC.setBackgroundColor(Color.GREEN);
+                            break;
+                        case 'D':
+                            ansD.setBackgroundColor(Color.GREEN);
+                            break;
+                    }
+
+                } else {
+                    ttobj.speak("答錯了!", TextToSpeech.QUEUE_FLUSH, null);
+
+                    // Highlight the correct answer
+                    String selectedAnswerA = ansA.getText().toString();
+                    String selectedAnswerB = ansB.getText().toString();
+                    String selectedAnswerC = ansC.getText().toString();
+                    String selectedAnswerD = ansD.getText().toString();
+                    if (selectedAnswerA.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex])) {
+                        ansA.setBackgroundColor(Color.GREEN);
+                    }
+                    else if (selectedAnswerB.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex])) {
+                        ansB.setBackgroundColor(Color.GREEN);
+                    }
+                    else if (selectedAnswerC.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex])) {
+                        ansC.setBackgroundColor(Color.GREEN);
+                    }
+                    else if (selectedAnswerD.contains("." + QuestionAnswer.correctAnswers[currentQuestionIndex])) {
+                        ansD.setBackgroundColor(Color.GREEN);
+                    }
+
+
+
+                    // Highlight the Wrong answer
+                    // Highlight the correct answer
+                    switch(selectedAnswer.charAt(0))
+                    {
+                        case 'A':
+                            ansA.setBackgroundColor(Color.RED);
+                            break;
+                        case 'B':
+                            ansB.setBackgroundColor(Color.RED);
+                            break;
+                        case 'C':
+                            ansC.setBackgroundColor(Color.RED);
+                            break;
+                        case 'D':
+                            ansD.setBackgroundColor(Color.RED);
+                            break;
+                    }
+                }
+
+
+
             } else {
-                ttobj.speak("答錯了!", TextToSpeech.QUEUE_FLUSH, null);
+                clickedButton.setText("提交");
+                currentQuestionIndex++;
+                loadNewQuestions();
             }
-            currentQuestionIndex++;
-            loadNewQuestions();
 
         }
         else if (clickedButton.getId() == R.id.Auto_ReadCheckBox)
@@ -195,7 +259,7 @@ public class Button3page extends AppCompatActivity implements View.OnClickListen
         else if (score < 3) {
             ttobj.speak("繼續努力!",  TextToSpeech.QUEUE_FLUSH, null);
         }
-        else if (score >= 3 && score <= 5) {
+        else if (score >= 3 && score < 5) {
             ttobj.speak("好彩合格!", TextToSpeech.QUEUE_FLUSH, null);
         }
         else if (score == 5)
